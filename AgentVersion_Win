@@ -1,0 +1,11 @@
+---
+- name: Get Veeam Agent version on Windows machine
+  hosts: windows
+  tasks:
+    - name: Get Veeam Agent version
+      win_shell: Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "Veeam Agent for Windows*"} | Select-Object -Property Name,Version
+      register: veeam_agent
+
+    - name: Display Veeam Agent version
+      debug:
+        var: veeam_agent.stdout_lines
