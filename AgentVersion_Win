@@ -9,10 +9,4 @@
     - name: Display Veeam Agent version
       debug:
         var: veeam_agent.stdout_lines
-  host: linux
-  task:
-    - name: Get Linux agent and system version version
-      bash>> code print;
-      service payload system.stdout
-      service payload balance standard system.stdout
-      service control systemd.stdout
+  
